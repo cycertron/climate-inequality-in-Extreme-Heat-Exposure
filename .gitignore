@@ -1,7 +1,10 @@
+cat > .gitignore << 'EOF'
 .DS_Store
 __pycache__/
 *.pyc
 outputs/
 data/processed/
-data/raw/
+*.nc
+data/raw/*.csv
 .ipynb_checkpoints/
+EOF
