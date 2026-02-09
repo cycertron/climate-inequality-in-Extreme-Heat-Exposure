@@ -72,7 +72,30 @@ Key parameter:
 ---
 ## Data Processing Flow
 
-![Data processing flow](docs/images/flow_diagram.png)
+data/raw/cdc_extreme_heat_days.csv
+   └──► preprocess_heat.py
+           └──► data/processed/heat_clean.csv
+
+US Census ACS Income API
+   └──► download_income.py
+           └──► data/processed/income_acs.csv
+
+data/processed/heat_clean.csv  +  data/processed/income_acs.csv
+   └──► build_dataset.py
+           └──► data/processed/model_df.csv
+
+data/processed/model_df.csv
+   └──► model_fit.py
+           └──► outputs/idata.nc
+
+outputs/idata.nc
+   └──► evaluate.py
+           ├──► outputs/metrics.json
+           └──► outputs/group_uncertainty.csv
+
+outputs/group_uncertainty.csv
+   └──► plots.py
+           └──► outputs/figs/interval_width_by_income_q.png
 
 
 ## Project structure
